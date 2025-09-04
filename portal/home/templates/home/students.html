@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,5 +37,22 @@
             <tr><td>Parishi Mishra</td><td>102</td><td>parishi@example.com</td><td>BSc CS</td><td>2</td></tr>
         </table>
     </main>
+
 </body>
 </html>
+-->
+
+{% extends "home/base.html" %}
+
+{% block title %}Students{% endblock %}
+
+{% block content %}
+    <h2>Student Directory</h2>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.Name }} – {{ student.Course }} (Year {{ student.Year }})</li>
+        {% empty %}
+            <li>No students found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

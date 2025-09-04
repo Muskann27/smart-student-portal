@@ -9,16 +9,23 @@
             <th>Student</th>
             <th>Subject</th>
             <th>Marks</th>
+            <th>Teacher</th>
         </tr>
-        <tr>
-            <td>Muskan Behl</td>
-            <td>Data Mining</td>
-            <td>90</td>
-        </tr>
-        <tr>
-            <td>Parishi Mishra</td>
-            <td>DBMS</td>
-            <td>88</td>
-        </tr>
+        {% for mark in marks %}
+            <tr>
+                <td>{{ mark.Student.Name }}</td>
+                <td>{{ mark.Subject }}</td>
+                <td>{{ mark.Marks_Obtained }}</td>
+                <td>
+                    {% if mark.Teacher %}
+                        {{ mark.Teacher.Name }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="4">No marks available.</td></tr>
+        {% endfor %}
     </table>
 {% endblock %}

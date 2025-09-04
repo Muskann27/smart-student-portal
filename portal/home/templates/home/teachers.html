@@ -5,8 +5,10 @@
 {% block content %}
     <h2>Teacher Directory</h2>
     <ul>
-        <li>Dr. Urmil Mam – Data Mining</li>
-        <li>Prof. Deepali Mam –  DBMS</li>
-        <li>Neha Mam – TOC</li>
+        {% for teacher in teachers %}
+            <li>{{ teacher.Name }} – {{ teacher.Department }} ({{ teacher.Subject }})</li>
+        {% empty %}
+            <li>No teachers found.</li>
+        {% endfor %}
     </ul>
 {% endblock %}

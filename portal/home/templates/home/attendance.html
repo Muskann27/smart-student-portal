@@ -3,7 +3,7 @@
 {% block title %}Attendance{% endblock %}
 
 {% block content %}
-    <h2>Attendance</h2>
+    <h2>Attendance Records</h2>
     <table border="1" cellpadding="10">
         <tr>
             <th>Student</th>
@@ -11,17 +11,15 @@
             <th>Date</th>
             <th>Status</th>
         </tr>
-        <tr>
-            <td>Muskan Behl</td>
-            <td>Data Mining</td>
-            <td>31-08-2025</td>
-            <td>Present</td>
-        </tr>
-        <tr>
-            <td>Parishi Mishra</td>
-            <td>DBMS</td>
-            <td>31-08-2025</td>
-            <td>Absent</td>
-        </tr>
+        {% for record in attendance %}
+            <tr>
+                <td>{{ record.Student.Name }}</td>
+                <td>{{ record.Subject }}</td>
+                <td>{{ record.Date }}</td>
+                <td>{{ record.Status }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="4">No attendance records available.</td></tr>
+        {% endfor %}
     </table>
 {% endblock %}
